@@ -30,7 +30,7 @@ We currently do not have a fixed test track for our experiments but we tend to t
 
 ## Online Accounts
 
-The lab has a number of online accounts required to maintain its operations. An Apple account is used to operate the iPad inside the KIA Niro.
+The lab has a number of online accounts required to maintain its operations. An Apple account is used to operate the iPad inside the KIA Niro. The address associated to that account is _naplab@icloud.com_.
 
 We also use a Google account for Google Cloud APIs billing.
 
