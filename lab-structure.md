@@ -6,7 +6,7 @@ NAPLab aims at conducting research on perception problems for autonomous cars wi
 
 Communication at the lab is done over [the nap-lab Slack](https://nap-lab.slack.com/). The lab also has [a SharePoint](https://studntnu.sharepoint.com/sites/TeamSite/4834/SitePages/Homepage.aspx?e=1%3Afd21a82bf1a94fa4b1e9eac2ae635295) which is not extensively used at time of writing.
 
-A high-resolution version of the NAPLab logo is [hosted online](https://www.dropbox.com/s/hbmrwya90hwmns8/naplab.png?dl=0) and is free to use.
+A high-resolution version of the NAPLab logo is [hosted online](https://drive.google.com/drive/folders/1CRoDm-9HIry3vfa5DEhlAHDrG6XEYM5E?usp=sharing) and is free to use.
 
 ## Vehicles
 
@@ -30,7 +30,7 @@ We currently do not have a fixed test track for our experiments but we tend to t
 
 ## Online Accounts
 
-The lab has a number of online accounts required to maintain its operations. An Apple account is used to operate the iPad inside the KIA Niro. The address associated to that account is _naplab@icloud.com_.
+The lab has a number of online accounts required to maintain its operations. An Apple account is used to operate the iPad inside the KIA Niro.
 
 We also use a Google account for Google Cloud APIs billing.
 
