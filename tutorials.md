@@ -113,11 +113,11 @@ Edit the _/etc/network/interfaces_ file to have this content:
 auto lo
 iface lo inet loopback
 
-auto p5p1
+allow-hotplug p5p1
 iface p5p1 inet dhcp
 iface p5p1 inet6 auto
 
-auto p6p1
+allow-hotplug p6p1
 iface p6p1 inet static
     address 192.168.20.100
     netmask 255.255.255.0
