@@ -14,7 +14,7 @@ NAPLab currently has two robotic platforms. The SPURV is a tiny robot built by K
 
 ## Machines
 
-The lab is located in the right side of the room IDI 458. It has 4 PCs equipped with NVIDIA 1080 GPUs, handy for models training. Three PCs have an installation of Ubuntu 16.04 and one has Ubuntu 14.04 for the needs of VIRES VTD.  One Acer “gamer” laptop with Ubuntu 16.04 and a ROS installation can be used when on the go \(in the KIA Niro etc...\) but it has quite a short battery life.  One LG laptop is also located at the lab and is used to program the SPURV.
+The lab is located in the right side of the room IDI 458. It has 4 PCs equipped with NVIDIA 1080 GPUs, handy for models training. Three PCs have an installation of Ubuntu 16.04 and one has Ubuntu 14.04 for the needs of VIRES VTD. One Acer “gamer” laptop with Ubuntu 16.04 and a ROS installation can be used when on the go \(in the KIA Niro etc...\) but it has quite a short battery life. One LG laptop is also located at the lab and is used to program the SPURV.
 
 NAPLab has a server accessible to allowed members by SSH at the address _nap01.idi.ntnu.no_ this server contains two NVIDIA Tesla V100. It is also used to store sensors data recording.
 
@@ -33,6 +33,4 @@ We currently do not have a fixed test track for our experiments but we tend to t
 The lab has a number of online accounts required to maintain its operations. An Apple account is used to operate the iPad inside the KIA Niro. The address associated to that account is _naplab@icloud.com_.
 
 We also use a Google account for Google Cloud APIs billing.
-
-
 

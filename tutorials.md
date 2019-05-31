@@ -147,6 +147,7 @@ sed -i 's@<password>@4rS42sJh@' modules/calibration/data/kia_niro/gnss_params/gn
 sed -i 's@api/js@api/js?key=AIzaSyDii-Y-bxQXWeUdnyZnBjszQS5rFym_HXQ@' modules/dreamview/frontend/src/store/config/parameters.yml
 sudo sed -i "/snd_pcsp/d" /etc/modprobe.d/blacklist.conf
 sudo sed -i "/pcspkr/d" /etc/modprobe.d/blacklist.conf
+sudo sh -c 'echo "UUID=562032004DA2CCDB /media/external_hdd ntfs-3g  auto,users,uid=1000,gid=100,dmask=027,fmask=137,utf8 0 0" > /etc/fstab'
 docker/scripts/dev_start.sh
 ```
 
