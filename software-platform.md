@@ -81,6 +81,10 @@ At a low level, drivers provide access to the hardware. We can distinguish CAN d
 
 On top of those low-level bricks, we can find a few crucial components. The perception module fuses sensor data and applies computer vision models to detect objects. The prediction module tracks objects over time and tries to predict their trajectories. The localization module also fuses information from different sensors to keep track of the "ego-vehicle". A high-definition map module is used for the car to be aware of its surroundings. A planning module uses the HD map, localization and prediction data to compute a trajectory for the car. A control module generates low-level commands \(throttle/brake/steering\) to maintain the car on the trajectory outputted by the planning module. A guardian module is used to monitor the status of the system and can trigger an emergency brake. A monitor module is responsible for restarting modules on a problem. Finally, a HMI module exposes information about the system status on a webpage called DreamView.
 
+A summary of the Apollo architecture is provided below.
+
+![](.gitbook/assets/architecture-apollo.jpg)
+
 ### Apollo Docker container
 
 Everything related to Apollo runs in an isolated environment. Docker is a system that enables the creation of lightweight sandboxes called "containers". Containers are essentially virtual machines running a controlled system under a host operating system. Before doing anything with Apollo, the Docker container has to be started: \(this should be done automatically at boot\)
@@ -221,7 +225,7 @@ Maps such as the ones provided by Google Maps or OpenStreetMap are not enough fo
 
 The _localization_ module requires localization maps. They are described in the next section about the _localization_ module and stored in a custom format defined by Baidu.
 
-The _planning_ module uses a different type of map which has very precise metadata describing each possible lanes in which the car can drive, where traffic lights or crosswalks are expected to be situated etc... Those maps are stored in an XML format derived from the OpenDrive standard defined by VIRES. The specifications of this format are not publicly distributed for unclear reasons but we got them from Baidu by [emailing them](https://github.com/ApolloAuto/apollo/issues/4048). Those specifications are available for you to download here. The code parsing Apollo OpenDrive maps, in _modules/map/hdmap/adapter/_ should also be quite helpful for parts that are left unclear by the specs \(eg: lat/lon -&gt; xy conversion or geometry representations\).
+The _planning_ module uses a different type of map which has very precise metadata describing each possible lanes in which the car can drive, where traffic lights or crosswalks are expected to be situated etc... Those maps are stored in an XML format derived from the OpenDrive standard defined by VIRES. The specifications of this format are not publicly distributed for unclear reasons but we got them from Baidu by [emailing them](https://github.com/ApolloAuto/apollo/issues/4048). Those specifications are available for you to download from the lab's SharePoint. The code parsing Apollo OpenDrive maps, in _modules/map/hdmap/adapter/_ should also be quite helpful for parts that are left unclear by the specs \(eg: lat/lon -&gt; xy conversion or geometry representations\).
 
 HD Maps can be visualized using tools described in the _tools_ section.
 

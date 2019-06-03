@@ -3,29 +3,14 @@
 ## _Tutorial 1:_ Getting the car running
 
 1. Turn the engine on by turning the key completely to the right
-2. Open the car roof rack with the key stored between the two front seats and put the Pandora on the roof, aligning the back of the mount with the hole in the back roof rack.
-3. Lower one of the back window and have the cable of the Pandora go through that window. Hold the Pandora cable boxes on top of one of the back seats.
-4. Have the GNSS antenna laying down in the floor of the car go through the window and put it on the back of the roof, aligned right in front of the aileron.
-5. Connect the hanging GNSS-LIDAR time synchronization cable to the Pandora box.
-6. Connect the hanging power cable to the Pandora box.
-7. Connect the hanging ethernet cable from the Pandora box to the leftmost side of the IPC
-8. On the right side of the trunk, rotate the power button to the left
-9. Press the power button of the IPC until you hear a sound
-10. Turn the iPad on
-11. Wait a few minutes until you hear a new sound coming from the IPC, indicating that the boot sequence is complete
-12. Open the DreamView app on the iPad to control Apollo
-
-### Navigation mode
-
-1. On the top right of the screen, select Navigation, Kia Niro and Sunnyvale 1
-2. From the left side, select the Modules pane.
-3. Turn the following modules on in that sequence: XXX
-
-### RTK Replay mode
-
-1. On the top right of the screen, select Navigation, Kia Niro and Sunnyvale 1
-2. From the left side, select the Modules pane.
-3. Turn the following modules on in that sequence: XXX
+2. On the right side of the trunk, rotate the power button to the left
+3. Press the power button of the IPC until you hear a sound
+4. Turn the iPad on
+5. Wait a few minutes until you hear a short melody coming from the IPC, indicating that the boot sequence is complete
+6. Open the DreamView app on the iPad to control Apollo
+7. On the top right of the screen, select either  "Pandora" or "RTK Record/Replay'' then "Kia Niro" and "Gloshaugen"
+8. Press the Setup button in the bottom left part of the screen
+9. If you are in RTK Record/Replay mode, you can then press the RTK Record Start/Stop buttons to record a trajectory. Then, RTK Replay Start to publish this trajectory as planning. Then Start Auto to let the car drive along this trajectory
 
 ## _Tutorial 2:_ Acquiring sensors data
 
@@ -59,7 +44,7 @@ When you are done, just use Ctrl-C and wait for it to finish filling the file in
 
 _Note:_ The same principle can be used to acquire data from the VLP16, by compiling the ROS node instead of Pandora\_ros.
 
-_Note:_ The same principle can be used to acquire data on the IPC \(eg: LIDAR+GPS+Perception output etc...\), by running _rosbag record_ from inside the Apollo Docker container or by starting the _Record bag_ module from DreamView, while the other modules are running.
+_Note:_ The same principle can be used to acquire data on the IPC \(eg: LIDAR+GPS+Perception output etc...\), by running _rosbag record_ from inside the Apollo Docker container or by starting the _Record bag_ module from DreamView, while the other modules are running. The Record bag module from DreamView will record all topics on an external hard disk if connected or only the important topics on the IPC if no disk is connected.
 
 ## _Tutorial 3:_ Reinstalling the IPC
 

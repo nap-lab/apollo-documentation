@@ -2,21 +2,21 @@
 
 ## Car
 
-The autonomous car used at NAPLab is built upon a white hybrid KIA Niro model from 2018. It also has nice stickers that show its link to NTNU \(funnily enough, with a spelling mistake\).
+The autonomous car used at NAPLab is built upon a white hybrid KIA Niro model from 2018. It also has nice stickers that show its link to NTNU.
 
-## LIDAR Mounts
+![](.gitbook/assets/p1001154.JPG)
 
-It is equipped with a wooden mount on its roof built by PhD students at [TrollLabs](https://www.ntnu.edu/mtp/trolllabs#/view/about). The mount can be used to screw LIDARs in \(either the HESAI Pandora or Velodyne VLP16 are supported\). It is held to the car using car roof racks. In order to provide consistent extrinsic calibrations, it is assumed that the back of the mount is always mounted aligned with the hole inside the back rack, the front of the wooden mount is hence mounted slightly longer on the front rack.
+## LIDAR & GNSS Antenna Mount
 
-In an HD map acquisition context \(more details on this in the software part\), our two LIDARs need to be mounted on the car. The VLP16 is then mounted on a suction cup tripod stored inside the lab’s cupboard.
+It is equipped with an aluminium plate on which the HESAI Pandora and the GNSS Antenna are screwed at a fixed position. This plate is held to the car using car roof racks. 
+
+In an HD map acquisition context \(more details on this in the software part\),  two LIDARs would need to be mounted on the car. The plate was made slightly longer than necessary to offer enough space for the VLP16 to be attached somewhere in front of the HESAI Pandora.
+
+
 
 ## Trunk components
 
-A variety of other components are placed inside the trunk of the car. They are all held to the trunk using velcro tape for convenience. The PwrPak7 should always be mounted precisely at the same position and angle. Its expected position is surrounded by gray tape.
+A variety of other components are placed inside the trunk of the car. Movable components are all held to the trunk using velcro tape for convenience. Our GNSS Receiver/IMU, the PwrPak7 should always be mounted precisely at the same position and angle, it has then been screwed to the trunk.
 
-## GNSS Antenna
-
-The GNSS antenna is secured on the roof using a magnetic mount provided by Novatel.
-
-
+![](.gitbook/assets/trunk.JPG)
 
