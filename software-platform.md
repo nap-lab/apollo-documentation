@@ -330,71 +330,40 @@ Each vehicle calibration files are stored inside a subdirectory of _modules/cali
 
 The _modules/tools_ directory contains a lot of subdirectories covering many use cases you might have.
 
-[The _calibration_ tool](https://github.com/FlorentRevest/apollo/blob/v3.0/docs/howto/how_to_update_vehicle_calibration.md) is used to acquire throttle/brake calibrations. It generates different throttle and brake commands \(in place of the control module\) and records the output of the localization module. Those data can then be post-processed to generate calibration curves usable by the actual _control_ module. The _data\_collector.py_ script takes three numbers: a throttle command, a maximum speed and a brake command to output when the maximum speed is reached, until the car stops. However, this script does not seem to work so [we incorporated a script from Apollo 1.0](https://github.com/FlorentRevest/apollo/commit/8cf23151eda9d36e4602280ec4aae54c75d2a600) named _data\_collector\_old.py_ which takes as argument a .txt file \(multiple examples can be found in _calibration\_data\_sample_\) and can do more complex scripting.
+1. [The **calibration tool**](https://github.com/FlorentRevest/apollo/blob/v3.0/docs/howto/how_to_update_vehicle_calibration.md) is used to acquire throttle/brake calibrations. It generates different throttle and brake commands \(in place of the control module\) and records the output of the localization module. Those data can then be post-processed to generate calibration curves usable by the actual _control_ module. The _data\_collector.py_ script takes three numbers: a throttle command, a maximum speed and a brake command to output when the maximum speed is reached, until the car stops. However, this script does not seem to work so [we incorporated a script from Apollo 1.0](https://github.com/FlorentRevest/apollo/commit/8cf23151eda9d36e4602280ec4aae54c75d2a600) named _data\_collector\_old.py_ which takes as argument a .txt file \(multiple examples can be found in _calibration\_data\_sample_\) and can do more complex scripting.
+2. The **configurator** can be used to edit protobuf configuration of various modules. This is equivalent to editing the files by hand and hence not very useful.
+3. The **controlinfo** script can be used to debug the behavior of the control module provided a planning command.
+4. The **create\_map** directory contains two scripts that can generate localization HDMaps for people who have a Mobileye sensor. They can use _lane\_recorder.py_ to record a sequence and then _create\_map.sh_ to generate the corresponding OpenDrive file.
+5. The **diagnostic** tool can be used to verify the frequency at which various topics are published. It is equivalent to the bottom center view of DreamView’s main screen.
+6. The **extrinsics\_broadcaster** tool reads TF transform stored in a Protobuf format and publishes them on the _/tf_ ROS topic.
+7. The **gen\_vehicle\_protocol** tool reads .dbc files that contains description frames acceptable on a CAN bus and tries to generate a CANBus vehicle module. You can find in our fork of Apollo two .dbc files which correspond to both the Vehicle and DriveKit CAN buses. The tool was ran on each file and then the output was modified to get the module properly working.
+8. The **lattice\_autotuning** tool has never been tried but it seems to be used for calibrating the _control_ module.
+9. The _**localization tool**_ can be used to [compare the performance of RTK and MSF localization](https://github.com/FlorentRevest/apollo/blob/v3.0/docs/howto/how_to_run_MSF_localization_module_on_your_local_computer.md#7-verify-the-localization-result-optional).
+10. The **manual\_traffic\_light** tool can be used to monitor the status of each traffic lights recorded in the currently used HD Map, or those which are close to the current localization. It can be used to debug if the perception module properly updates the color of a traffic light.
+11. The **map\_gen** directory contains a variety of tools that can generate fake high definition HD maps. For instance, one can extract the trajectory of a .bag file using _extract\_path.py_, then use _map\_gen\_single\_lane.py_ to create an OpenDrive map that contains procedurally generated lane markings. This map can not be used for precise localization but can be used in very limited scenarios for instance when testing a RoI filter \(region of interest\). A few scripts can also manually generate traffic lights. Those scripts can also be useful to look into for our own research into Apollo HD Maps.
+12. The **mapshow** tool can be used to visualize an OpenDrive HD Map.
+13. The **mobileye\_viewer** tool does what its name suggests and has never been used because we do not have Mobileye sensors.
+14. The **mock\_routing** script asks the planning module to generate a trajectory between two hardcoded waypoints. Their coordinates do not correspond to anything of interest in our UTM Zone but we could tweak this script to our own needs.
+15. It is a bit unclear what the **navigation** module is about, with scripts that seem to be very application-specific, with references to mobileye sensors etc. We do not believe that directory would be of any use to NAPLab.
+16. The **navigator** directory contains scripts to record a trajectory, smooth it out and send it as a navigation request to the other modules.
+17. The **ota** directory contains scripts related to Over-The-Air updates that is only available to Baidu partners and not of interest to us.
+18. The **pandora\_camera\_scaler** has been written by us to accomodate the needs of Baidu extrinsic calibration tools. If one wants to run the Baidu camera-camera, camera-lidar or camera-radar proprietary tools, images have to be in a certain format. This conversation is too heavy to be done in-line so we created this script that can reformat images stored in a .bag recording. The new .bag can then be played and is accepted by the Baidu tools.
+19. The **pandora\_pointcloud\_renamer** is also a home-made script that renames a _/apollo/sensor/velodyne64/compensator/PointCloud_ topic into _/apollo/sensor/velodyne64/VelodyneScanUnified_ in a bag. This topic name is expected by the GNSS-LIDAR extrinsic calibration service in the Baidu Cloud. However, we can not use this service from Europe so this script should be of limited use.
+20. The **perception** tool generates fake perception data, to simulate the perception module during development time.
+21. **Planning\_traj\_plot** plots planning trajectories and localization data recorded in a prototbuf file.
+22. **Plot\_control** is used to plot steering/throttle/brake commands.
+23. The **plot\_trace** tool is used to plot and compare a pre-recorded trajectory \(while driving manually\) with an autonomous trajectory \(drawn while Apollo drives\). \(See _record\_play_ for more information on RTK replay\)
+24. The tools in **prediction/mlp\_train** are used to train and manipulate .h5 DNN models for the perception module.
+25. The **realtime\_plot** tool shows information about planning and control
+26. The **record\_play** tools are used for RTK replay. One script can record a trajectory from the localization module and the other can generate a planning message based on the recorded trajectory. This is useful to debug the control module.
+27. The **relative\_map\_viewer** plots map as they are discovered through sensors in navigation mode.
+28. The **replay** tool is quite similar to _record\_play_ except that it records planning data.
+29. The **rosbag** directory contains a bunch of tools related to _.bag_ files processing. For instance, scripts are provided to get statistics about the "bumpiness" or the mileage, of extrinsics in a _.bag_. Other scripts can dump various info from a _.bag_ such ass planning/gps/images/trajectory/planning/... data.
+30. The **routing** directory contains scripts related to the visualization of maps and routing data.
+31. The [**supervisord**](http://supervisord.org/) directory contains configuration for the supervisor which in in charge of starting or restarting modules based on some policies.
+32. The **voice\_detection** contains a simple speech recognition module that can be triggered from DreamView and responds to the commands "Apollo, setup", "Apollo, auto-mode" and "Apollo, disengage".
 
-The _configurator_ can be used to edit protobuf configuration of various modules. This is equivalent to editing the files by hand and hence not very useful.
-
-The _controlinfo_ script can be used to debug the behavior of the control module provided a planning command.
-
-The _create\_map_ directory contains two scripts that can generate localization HDMaps for people who have a Mobileye sensor. They can use _lane\_recorder.py_ to record a sequence and then _create\_map.sh_ to generate the corresponding OpenDrive file.
-
-The _diagnostic_ tool can be used to verify the frequency at which various topics are published. It is equivalent to the bottom center view of DreamView’s main screen.
-
-The _extrinsics\_broadcaster_ tool reads TF transform stored in a Protobuf format and publishes them on the _/tf_ ROS topic.
-
-The _gen\_vehicle\_protocol_ tool reads .dbc files that contains description frames acceptable on a CAN bus and tries to generate a CANBus vehicle module. You can find in our fork of Apollo two .dbc files which correspond to both the Vehicle and DriveKit CAN buses. The tool was ran on each file and then the output was modified to get the module properly working.
-
-The _lattice\_autotuning_ tool has never been tried but it seems to be used for calibrating the _control_ module.
-
-The _localization_ tool can be used to [compare the performance of RTK and MSF localization](https://github.com/FlorentRevest/apollo/blob/v3.0/docs/howto/how_to_run_MSF_localization_module_on_your_local_computer.md#7-verify-the-localization-result-optional).
-
-The _manual\_traffic\_light_ tool can be used to monitor the status of each traffic lights recorded in the currently used HD Map, or those which are close to the current localization. It can be used to debug if the perception module properly updates the color of a traffic light.
-
-The _map\_gen_ directory contains a variety of tools that can generate fake high definition HD maps. For instance, one can extract the trajectory of a .bag file using _extract\_path.py_, then use _map\_gen\_single\_lane.py_ to create an OpenDrive map that contains procedurally generated lane markings. This map can not be used for precise localization but can be used in very limited scenarios for instance when testing a RoI filter \(region of interest\). A few scripts can also manually generate traffic lights. Those scripts can also be useful to look into for our own research into Apollo HD Maps.
-
-The _mapshow_ tool can be used to visualize an OpenDrive HD Map.
-
-The _mobileye\_viewer_ tool does what its name suggests and has never been used because we do not have Mobileye sensors.
-
-The _mock\_routing_ script asks the planning module to generate a trajectory between two hardcoded waypoints. Their coordinates do not correspond to anything of interest in our UTM Zone but we could tweak this script to our own needs.
-
-It is a bit unclear what the _navigation_ module is about, with scripts that seem to be very application-specific, with references to mobileye sensors etc. We do not believe that directory would be of any use to NAPLab.
-
-The _navigator_ directory contains scripts to record a trajectory, smooth it out and send it as a navigation request to the other modules.
-
-The _ota_ directory contains scripts related to Over-The-Air updates that is only available to Baidu partners and not of interest to us.
-
-The _pandora\_camera\_scaler_ has been written by us to accomodate the needs of Baidu extrinsic calibration tools. If one wants to run the Baidu camera-camera, camera-lidar or camera-radar proprietary tools, images have to be in a certain format. This conversation is too heavy to be done in-line so we created this script that can reformat images stored in a .bag recording. The new .bag can then be played and is accepted by the Baidu tools.
-
-The _pandora\_pointcloud\_renamer_ is also a home-made script that renames a _/apollo/sensor/velodyne64/compensator/PointCloud_ topic into _/apollo/sensor/velodyne64/VelodyneScanUnified_ in a bag. This topic name is expected by the GNSS-LIDAR extrinsic calibration service in the Baidu Cloud. However, we can not use this service from Europe so this script should be of limited use.
-
-The _perception_ tool generates fake perception data, to simulate the perception module during development time.
-
-_Planning\_traj\_plot_ plots planning trajectories and localization data recorded in a prototbuf file.
-
-textitPlot\_control is used to plot steering/throttle/brake commands.
-
-The _plot\_trace_ tool is used to plot and compare a pre-recorded trajectory \(while driving manually\) with an autonomous trajectory \(drawn while Apollo drives\). \(See _record\_play_ for more information on RTK replay\)
-
-The tools in _prediction/mlp\_train_ are used to train and manipulate .h5 DNN models for the perception module.
-
-The _realtime\_plot_ tool shows information about planning and control
-
-The _record\_play_ tools are used for RTK replay. One script can record a trajectory from the localization module and the other can generate a planning message based on the recorded trajectory. This is useful to debug the control module.
-
-The _relative\_map\_viewer_ plots map as they are discovered through sensors in navigation mode.
-
-The _replay_ tool is quite similar to _record\_play_ except that it records planning data.
-
-The _rosbag_ directory contains a bunch of tools related to _.bag_ files processing. For instance, scripts are provided to get statistics about the "bumpiness" or the mileage, of extrinsics in a _.bag_. Other scripts can dump various info from a _.bag_ such ass planning/gps/images/trajectory/planning/... data.
-
-The _routing_ directory contains scripts related to the visualization of maps and routing data.
-
-The [_supervisord_](http://supervisord.org/) directory contains configuration for the supervisor which in in charge of starting or restarting modules based on some policies.
-
-The _voice\_detection_ contains a simple speech recognition module that can be triggered from DreamView and responds to the commands "Apollo, setup", "Apollo, auto-mode" and "Apollo, disengage".
-
-_Note:_ All tools plotting things use matplotlib which is not correctly installed by Baidu inside the Docker environment. Also, this requires an Xorg server to be installed on the IPC to visualize data. We voluntarily did not install an Xorg server to keep ressources for the autonomous driving system. You might then want to run those tools on a different machine than the IPC itself.
+**Note:** All tools plotting things use matplotlib which is not correctly installed by Baidu inside the Docker environment. Also, this requires an Xorg server to be installed on the IPC to visualize data. We voluntarily did not install an Xorg server to keep ressources for the autonomous driving system. You might then want to run those tools on a different machine than the IPC itself.
 
 #### End-to-end
 
