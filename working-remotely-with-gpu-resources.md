@@ -11,6 +11,7 @@ For the nap01 server, please follow the following rules:
 1. Use nvidia-docker to run jobs
 2. When starting a docker container, name the container with {ntnu\_username}\_...
 3. When creating a docker image, name the image {ntnu\_username}/image\_name
+4. ALWAYS check nvidia-smi, to be certain that nobody is using the GPU you want to use 
 
 
 
@@ -79,6 +80,14 @@ Then, I can start the training script with on GPU id 0:
 ```text
 ./run_docker_example 0 python -m deep_privacy.train
 ```
+
+If you want to start a job without GPU, you can run:
+
+```text
+./run_docker_example "" python -m deep_privacy.train
+```
+
+
 
 This will execute the following docker cmd:
 
