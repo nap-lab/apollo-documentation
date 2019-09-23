@@ -7,4 +7,5 @@
 * [Software Platform](software-platform.md)
 * [Cloud Platform](cloud-platform.md)
 * [Tutorials](tutorials.md)
+* [Working Remotely with GPU resources](working-remotely-with-gpu-resources.md)
 
