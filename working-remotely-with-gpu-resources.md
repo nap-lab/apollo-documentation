@@ -23,8 +23,7 @@ To get a short introduction to docker, we recommend you to read through the [Ope
 
 Docker commands can become very long, with several static settings. To make your life easier, you can create simple python scripts to start a docker container. For example:
 
-{% code-tabs %}
-{% code-tabs-item title="run\_docker" %}
+{% code title="run\_docker" %}
 ```python
 
 #!/usr/bin/env python3
@@ -59,8 +58,7 @@ print(command)
 os.system(command)
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 There is a couple of important settings to change here:
 
@@ -94,6 +92,14 @@ This will execute the following docker cmd:
 ```text
 nvidia-docker run --name haakohu_5556_other --ipc host --rm -v /home/haakohu/DeepPrivacy:/workspace -e CUDA_VISIBLE_DEVICES=8 --log-opt max-size=50m -it haakohu/pytorch python -m deep_privacy.train
 ```
+
+
+
+#### Pre-built docker images
+
+Nvidia GPU Cloud has several pre-built docker images for Nvidia systems:
+
+{% embed url="https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow" %}
 
 
 
