@@ -4,6 +4,15 @@ Connected to the naplab, we have several GPU resources. This page will give you 
 
 
 
+**Resources:**
+
+* Nap01 Server
+* HPC IDUN Cluster \(hpc.ntnu.no\)
+
+
+
+\*\*\*\*
+
 ## Rules
 
 For the nap01 server, please follow the following rules:
