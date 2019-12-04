@@ -22,7 +22,28 @@ For the nap01 server, please follow the following rules:
 3. When creating a docker image, name the image {ntnu\_username}/image\_name
 4. ALWAYS check nvidia-smi, to be certain that nobody is using the GPU you want to use 
 
+## Connecting to nap01.idi.ntnu.no
 
+You can connect to the server by using ssh:
+
+```text
+ssh ntnu_username@nap01.idi.ntnu.no
+```
+
+Nap01 has two NVIDIA V100-32GB GPUs and  2x Intel Xeon Gold 6132 CPUs. 
+
+### Storage
+
+There is two places to store data on the server:
+
+* **/lhome/ntnu\_username:** This is a 1TB disk where you should launch your programs from. However, you should **NOT** store large amount of data on this disk! It is also taken backup of this disk
+* **/work/ntnu\_username:** This disk is for storing larger datasets. If you don't have a directory there, contact Frank or Håkon.
+
+#### Useful Commands
+
+* df -h: View disk space on the server
+* htop: View cpu/RAM usage on the server
+* nvidia-smi: View VRAM/GPU usage on the V100 cards.
 
 ## Using docker
 
